@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Adapters.Order.Interfaces
+namespace Infraestructure
 {
-    public interface IOrderRepository
+    public class Context
     {
     }
 }

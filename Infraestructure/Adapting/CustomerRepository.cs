@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Adapters.Customer.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Infraestructure.Adapting
 {
-    internal class CustomerRepository
+    public class CustomerRepository:ICustomerRepository
     {
     }
 }

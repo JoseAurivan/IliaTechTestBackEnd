@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Adapters.Customer
+namespace Core.Adapters.Customer.Interfaces
 {
-    internal interface ICustomerRepository
+    public interface ICustomerRepository
     {
     }
 }
