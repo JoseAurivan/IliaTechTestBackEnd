@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "T67VpxqJ34SsWidABuklGATipzd3ucjm81fcBTd6zUB9pEgBuf/RJKQRlLutQDtq6b4sE40ykG8kNYVySTSlBw==",
+  "dgSpecHash": "O6YANLUBlUSaG66GPtEV3gGOFapzq+9roAZRtRPA6ecJv+Tk+3ymYoprLLnMMF3kA9WGYjwCJoA5IWRnxpsVuA==",
   "success": true,
   "projectFilePath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\TesteTecnico Ilia\\backend\\TechTest\\Infraestructure\\Infraestructure.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\auriv\\.nuget\\packages\\core\\1.0.0\\core.1.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
