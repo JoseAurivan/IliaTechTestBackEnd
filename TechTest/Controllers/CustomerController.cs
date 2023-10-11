@@ -1,5 +1,5 @@
 ﻿using Core;
-using Core.Adapters.Customer.Interfaces;
+using Core.Adapters.Customers.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,34 +18,70 @@ namespace TechTest.Controllers
 
 
         [HttpGet]
-        public IActionResult GetAllCustomers()
+        public async Task<IActionResult> GetAllCustomers()
         {
-            var customers = _customerService.GetAllCustomers();
-            return Ok();
+            try
+            {
+                var customers = await  _customerService.GetAllCustomers();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Not Possible fetch data");
+            }
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetCustomer(int id)
+        public async Task<IActionResult> GetCustomer(int id)
         {
-            return Ok();
+            try 
+            {
+                var customer = await _customerService.GetCustomerById(id);
+                return Ok(customer);
+            }catch(Exception ex)
+            {
+                return BadRequest("User not found or doesn't exist");
+            }
+            
         }
 
         [HttpPost]
-        public IActionResult AddCustomer(Customer customer)
+        public async Task<IActionResult> AddCustomer(Customer customer)
         {
-            return Created("api/[controller]", customer);
+            try
+            {
+                var id = await _customerService.AddCustomer(customer);
+                return Created("api/[controller]", id);
+            }catch(Exception ex)
+            {
+                return BadRequest("Unable to create customer");
+            }
         }
 
         [HttpPut]
-        public IActionResult UpdateCustomer(Customer customer)
+        public async Task<IActionResult> UpdateCustomer(Customer customer)
         {
-            return Ok();
+            try
+            {
+                await  _customerService.UpdateCustomer(customer);
+                return Ok();
+            }catch(Exception ex)
+            {
+                return BadRequest("Unable to update customer");
+            }
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteCustomer(int id)
+        public async Task<IActionResult> DeleteCustomer(int id)
         {
-            return Ok();
+            try
+            {
+                await _customerService.DeleteCustomer(id);
+                return Ok();
+            }catch(Exception ex)
+            {
+                return BadRequest("Unable to delete customer");
+            }
         }
     }
 }

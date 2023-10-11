@@ -1,4 +1,5 @@
 ﻿using Core;
+using Core.Adapters.Orders.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,33 +9,57 @@ namespace TechTest.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
-        [HttpGet("customer/{id}")]
-        public IActionResult GetAllOrdersByCustomerId(int id)
+        private readonly IOrderService _orderService;
+
+        public OrderController(IOrderService orderService)
         {
-            return Ok();
+            _orderService = orderService;
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetOrder(int id) {
-            return Ok();
+        [HttpGet("customer/{id}")]
+        public async Task<IActionResult> GetAllOrdersByCustomerId(int id)
+        {
+            try
+            {
+                var orders = await _orderService.GetAllOrdersByCustomerId(id);
+                return Ok(orders);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Unable to get orders of this customer");
+            }
+
         }
+
 
         [HttpPost]
-        public IActionResult AddOrders(Order order) 
+        public async Task<IActionResult> AddOrders(Order order)
         {
-            return Created("api/[controller]",order);
-        }
+            try
+            {
+                var id = await _orderService.AddOrder(order);
+                return Created("api/[controller]", id);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Unable to save Order");
+            }
 
-        [HttpPut]
-        public IActionResult UpdateOrders(Order order)
-        {
-            return Ok();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteOrders(int id)
+        public async Task<IActionResult> DeleteOrders(int id)
         {
-            return Ok();
+            try
+            {
+                await _orderService.DeleteOrder(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Unable to delete order");
+            }
+            
         }
     }
 }
