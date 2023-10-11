@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "n8RPQSQ2bUPjbKI9ajfNeCgyFAjcE65LgSbu7aUDm/a/OJQHq2EHb+vEHxkTnwD8Ujzjo80eDlc2duWnfScKRQ==",
+  "dgSpecHash": "YBpE56Te00dh1u91dGJ9/wZ5+rwXQev9QyAMkvDPjrcGF/7t/uYXvm/4AbDsxzIERcec73AjtZN+ujmTfwe3pQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\TesteTecnico Ilia\\backend\\TechTest\\TechTest\\TechTest.csproj",
   "expectedPackageFiles": [
@@ -9,7 +9,8 @@
     "C:\\Users\\auriv\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\auriv\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\auriv\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
-    "C:\\Users\\auriv\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+    "C:\\Users\\auriv\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
+    "C:\\Users\\auriv\\.nuget\\packages\\core\\1.0.0\\core.1.0.0.nupkg.sha512"
   ],
   "logs": []
 }
