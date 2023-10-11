@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace Infraestructure.DataBaseModels
 {
-    internal class OrderDTO
+    public class OrderDTO
     {
+        public OrderDTO()
+        {
+                
+        }
         public int Id { get; set; }
         public int Description { get; set; }
+
+        public CustomerDTO? Customer { get; set; }
         public int CustomerId { get; set; }
     }
 }

@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace Infraestructure.DataBaseModels
 {
-    internal class CustomerDTO
+    public class CustomerDTO
     {
+        public CustomerDTO()
+        {
+                
+        }
+
         public int Id { get; set; }
         public string Name { get; set; }
         public ICollection<OrderDTO>? Orders { get; set; }
