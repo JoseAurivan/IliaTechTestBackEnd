@@ -1,4 +1,5 @@
 ﻿using Core;
+using Core.Adapters.Customer.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,9 +9,18 @@ namespace TechTest.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
+        private readonly ICustomerService _customerService;
+
+        public CustomerController(ICustomerService customerService)
+        {
+            _customerService = customerService;
+        }
+
+
         [HttpGet]
         public IActionResult GetAllCustomers()
         {
+            var customers = _customerService.GetAllCustomers();
             return Ok();
         }
 
