@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.Adapters.Customer.Interfaces
 {
-    internal interface ICustomerService
+    public interface ICustomerService
     {
     }
 }

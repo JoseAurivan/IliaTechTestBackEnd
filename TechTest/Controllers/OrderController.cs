@@ -8,8 +8,8 @@ namespace TechTest.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult GetAllOrders()
+        [HttpGet("customer/{id}")]
+        public IActionResult GetAllOrdersByCustomerId(int id)
         {
             return Ok();
         }
