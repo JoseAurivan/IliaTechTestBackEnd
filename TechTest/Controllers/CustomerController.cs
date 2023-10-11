@@ -23,7 +23,7 @@ namespace TechTest.Controllers
             try
             {
                 var customers = await  _customerService.GetAllCustomers();
-                return Ok();
+                return Ok(customers.ToList());
             }
             catch (Exception ex)
             {

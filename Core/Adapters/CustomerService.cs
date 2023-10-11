@@ -18,27 +18,54 @@ namespace Core.Adapters
 
         public async Task<int> AddCustomer(Customer customer)
         {
-            await _customerRepository.AddCustomer(customer);
+            try
+            {
+                int id = await _customerRepository.AddCustomer(customer);
+                return id;
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
         }
 
-        public Task DeleteCustomer(int id)
+        public async Task DeleteCustomer(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _customerRepository.DeleteCustomer(id);
+            }
+            catch (Exception e) { throw; }
+
         }
 
-        public Task<ICollection<Customer>> GetAllCustomers()
+        public async Task<ICollection<Customer>> GetAllCustomers()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var customers = await _customerRepository.GetAllCustomers();
+                return customers;
+            }
+            catch (Exception e) {throw; }
         }
 
-        public Task<Customer> GetCustomerById(int id)
+        public async Task<Customer> GetCustomerById(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var customer = await _customerRepository.GetCustomerById(id);
+                return customer;
+            }
+            catch (Exception e) { throw; }
         }
 
-        public Task UpdateCustomer(Customer customer)
+        public async Task UpdateCustomer(Customer customer)
         {
-            throw new NotImplementedException();
+            try 
+            {
+                await _customerRepository.UpdateCustomer(customer);
+            } catch (Exception e) { throw; }
+
         }
     }
 }
