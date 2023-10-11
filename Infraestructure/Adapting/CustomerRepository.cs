@@ -3,7 +3,7 @@ using Core.Adapters.Customers.Interfaces;
 using Infraestructure.DataBaseModels;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -78,8 +78,12 @@ namespace Infraestructure.Adapting
                 var customerDTO = await _context.Customer.FirstOrDefaultAsync(x => x.Id == customer.CustomerId);
                 if(customerDTO is not null)
                 {
-                    customerDTO.ChangeCustomerData(customer);
+                    customerDTO.Name = customer.Name;
+                    customerDTO.Email = customer.Email;
+                    _context.Entry(customerDTO).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
                 }
+                else { throw new Exception(); }
             } catch (Exception ex) { throw; }
 
         }

@@ -4,7 +4,7 @@ using Infraestructure.DataBaseModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +27,7 @@ namespace Infraestructure.Adapting
                 var orderDTO = new OrderDTO(default,order.Description,order.CustomerId);
                 context.Order.Add(orderDTO);
                 await context.SaveChangesAsync();
-                return order.OrderId;
+                return orderDTO.Id;
 
             }catch(Exception) { throw; }
 
