@@ -10,7 +10,7 @@ namespace Infraestructure.Adapting
 {
     public class OrderRepository : IOrderRepository
     {
-        public Task<int> AddOrder(Order customer)
+        public Task<int> AddOrder(Order order)
         {
             throw new NotImplementedException();
         }
