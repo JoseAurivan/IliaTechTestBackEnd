@@ -1,4 +1,6 @@
-﻿namespace Core
+﻿using Core.Validations;
+
+namespace Core
 {
     public class Customer
     {

@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "gzHWr8hghuqf+OVs5jpH1v+7rFfoAY4L9d3XqN/ITJQSHwkkhZz7OlZy4yjfbsVfOUg3mP6i6w950I1dZLlPzA==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\TesteTecnico Ilia\\backend\\TechTest\\Tests\\Tests.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Falha ao recuperar informações sobre 'Microsoft.CodeCoverage' da origem remota 'https://api.nuget.org/v3-flatcontainer/microsoft.codecoverage/index.json'.",
+      "libraryId": "Microsoft.CodeCoverage"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Falha ao recuperar informações sobre 'Microsoft.TestPlatform.TestHost' da origem remota 'https://api.nuget.org/v3-flatcontainer/microsoft.testplatform.testhost/index.json'.",
+      "libraryId": "Microsoft.TestPlatform.TestHost"
+    }
+  ]
+}
