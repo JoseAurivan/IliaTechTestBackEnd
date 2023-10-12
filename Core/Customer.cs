@@ -11,9 +11,11 @@ namespace Core
 
         public Customer(int customerId, string name, string email)
         {
-            CustomerId = customerId;
-            Name = name;
-            Email = email;
+
+                CustomerId = customerId;
+                Name = name;
+                Email = email;
+
         }
 
         public int CustomerId { get; set; }

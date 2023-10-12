@@ -21,5 +21,23 @@ namespace Test
 
             Assert.DoesNotMatch(new EmailValidation().Regex, email);
         }
+
+        [Fact]
+        public void TestIfValidationMethodValidatesCorrectly()
+        {
+            var email = "valid@email.com";
+
+
+            Assert.True(new EmailValidation().Validation(email));
+        }
+
+        [Fact]
+        public void TestIfValidationMethodInvalidatesCorrectly()
+        {
+            var email = "notvalid.email.com";
+
+
+            Assert.False(new EmailValidation().Validation(email));
+        }
     }
 }

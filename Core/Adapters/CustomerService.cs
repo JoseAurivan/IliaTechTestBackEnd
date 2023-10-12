@@ -1,4 +1,5 @@
 ﻿using Core.Adapters.Customers.Interfaces;
+using Core.Validations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,10 +18,17 @@ namespace Core.Adapters
             _customerRepository = customerRepository;
         }
 
+        public void ValidateEmail(string email) 
+        {
+            var result = new EmailValidation().Validation(email);
+            if (!result) throw new InvalidEmail();
+        }
+
         public async Task<int> AddCustomer(Customer customer)
         {
             try
             {
+
                 if(customer.Orders?.Count > 0)
                 {
                     return await _customerRepository.AddCustomerAndOrder(customer);
