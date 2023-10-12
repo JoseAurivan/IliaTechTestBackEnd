@@ -21,20 +21,24 @@ namespace Core.Adapters
         public void ValidateEmail(string email) 
         {
             var result = new EmailValidation().Validation(email);
-            if (!result) throw new InvalidEmail();
+            if (!result) throw new InvalidEmailException();
         }
 
         public async Task<int> AddCustomer(Customer customer)
         {
             try
             {
-
+                ValidateEmail(customer.Email);
                 if(customer.Orders?.Count > 0)
                 {
                     return await _customerRepository.AddCustomerAndOrder(customer);
                 }
                 return await _customerRepository.AddCustomer(customer);
                  
+            }
+            catch(InvalidEmailException e)
+            {
+                throw e;
             }
             catch (Exception e)
             {
@@ -50,10 +54,16 @@ namespace Core.Adapters
                 {
                     foreach(var customer in  customers.Customers)
                     {
+                        ValidateEmail(customer.Email);
                         await AddCustomer(customer);
                     }
                 }
-            }catch(Exception ex)
+            }
+            catch(InvalidEmailException ex)
+            {
+                throw ex;
+            }
+            catch(Exception ex)
             {
                 throw;
             }
@@ -94,7 +104,12 @@ namespace Core.Adapters
         {
             try 
             {
+                ValidateEmail(customer.Email);
                 await _customerRepository.UpdateCustomer(customer);
+            }
+            catch(InvalidEmailException ex)
+            {
+                throw ex;
             }
             catch(CustomerNullException ex) { throw; }
             catch (Exception e) { throw; }

@@ -20,5 +20,5 @@ namespace Core
 
     public class CustomerNullException : Exception { }
 
-    public class InvalidEmail : Exception { }
+    public class InvalidEmailException : Exception { }
 }
