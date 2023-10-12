@@ -9,4 +9,6 @@ namespace Core
     public class OrderExceptions
     {
     }
+
+    public class OrderNotFoundException : Exception { }
 }

@@ -24,9 +24,13 @@ namespace TechTest.Controllers
                 var orders = await _orderService.GetAllOrdersByCustomerId(id);
                 return Ok(orders);
             }
+            catch(OrderNotFoundException ex)
+            {
+
+            }
             catch (Exception ex)
             {
-                return BadRequest("Unable to get orders of this customer");
+                return StatusCode(500, "Database could not respond");
             }
 
         }
@@ -42,7 +46,7 @@ namespace TechTest.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest("Unable to save Order");
+                return StatusCode(500,"Database could not respond");
             }
 
         }
@@ -57,7 +61,7 @@ namespace TechTest.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest("Unable to delete order");
+                return StatusCode(500, "Database could not respond");
             }
             
         }
