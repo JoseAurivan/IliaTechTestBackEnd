@@ -57,6 +57,7 @@ namespace Core.Adapters
             {
                 await _customerRepository.DeleteCustomer(id);
             }
+            catch(DeleteCustomerException ex) { throw; }
             catch (Exception e) { throw; }
 
         }
@@ -86,7 +87,9 @@ namespace Core.Adapters
             try 
             {
                 await _customerRepository.UpdateCustomer(customer);
-            } catch (Exception e) { throw; }
+            }
+            catch(CustomerNullException ex) { throw; }
+            catch (Exception e) { throw; }
 
         }
     }

@@ -15,4 +15,8 @@ namespace Core
     {
 
     }
+
+    public class CustomersOrderNull : Exception { }
+
+    public class CustomerNullException : Exception { }
 }
