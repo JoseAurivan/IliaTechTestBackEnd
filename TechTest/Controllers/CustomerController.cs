@@ -52,7 +52,12 @@ namespace TechTest.Controllers
             {
                 var id = await _customerService.AddCustomer(customer);
                 return Created("api/[controller]", id);
-            }catch(Exception ex)
+            }
+            catch (InvalidEmailException)
+            {
+                return StatusCode(400, "Email is invalid");
+            }
+            catch(Exception ex)
             {
                 return StatusCode(500, "Database could not respond");
             }
@@ -65,6 +70,10 @@ namespace TechTest.Controllers
             {
                 await _customerService.AddCustomerList(customers);
                 return Created("api/[controller]",null);
+            }
+            catch (InvalidEmailException)
+            {
+                return StatusCode(400, "Email is invalid");
             }
             catch (Exception ex)
             {
@@ -80,7 +89,11 @@ namespace TechTest.Controllers
                 await  _customerService.UpdateCustomer(customer);
                 return Ok();
             }
-            catch(CustomerNullException ex)
+            catch (InvalidEmailException)
+            {
+                return StatusCode(400, "Email is invalid");
+            }
+            catch (CustomerNullException ex)
             {
                 return StatusCode(401, "The resource is no longer avalaible");
             }
