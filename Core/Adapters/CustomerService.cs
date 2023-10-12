@@ -34,9 +34,21 @@ namespace Core.Adapters
             }
         }
 
-        public Task AddCustomerList(CustomerList customer)
+        public async Task AddCustomerList(CustomerList customers)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if(customers.Customers.Count > 0)
+                {
+                    foreach(var customer in  customers.Customers)
+                    {
+                        await AddCustomer(customer);
+                    }
+                }
+            }catch(Exception ex)
+            {
+                throw;
+            }
         }
 
         public async Task DeleteCustomer(int id)
