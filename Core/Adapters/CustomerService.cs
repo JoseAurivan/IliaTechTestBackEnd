@@ -1,5 +1,6 @@
 ﻿using Core.Adapters.Customers.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,13 +21,22 @@ namespace Core.Adapters
         {
             try
             {
-                int id = await _customerRepository.AddCustomer(customer);
-                return id;
+                if(customer.Orders?.Count > 0)
+                {
+                    return await _customerRepository.AddCustomerAndOrder(customer);
+                }
+                return await _customerRepository.AddCustomer(customer);
+                 
             }
             catch (Exception e)
             {
                 throw;
             }
+        }
+
+        public Task AddCustomerList(CustomerList customer)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task DeleteCustomer(int id)

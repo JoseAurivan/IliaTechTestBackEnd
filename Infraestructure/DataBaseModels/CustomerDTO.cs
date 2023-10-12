@@ -21,6 +21,14 @@ namespace Infraestructure.DataBaseModels
             Email = email;
         }
 
+        public CustomerDTO(int id, string name, string email, ICollection<OrderDTO>? orders)
+        {
+            Id = id;
+            Name = name;
+            Email = email;
+            Orders = orders;
+        }
+
         public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
@@ -28,7 +36,7 @@ namespace Infraestructure.DataBaseModels
 
         public Customer ConvertToModel(CustomerDTO customerDTO) 
         {
-            return new Customer(customerDTO.Id,customerDTO.Email,customerDTO.Email);
+            return new Customer(customerDTO.Id,customerDTO.Name,customerDTO.Email);
         }
 
         public void ChangeCustomerData(Customer customer)

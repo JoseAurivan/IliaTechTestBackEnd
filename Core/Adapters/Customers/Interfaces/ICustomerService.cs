@@ -11,6 +11,7 @@ namespace Core.Adapters.Customers.Interfaces
         Task<ICollection<Customer>> GetAllCustomers();
         Task<Customer> GetCustomerById(int id);
         Task<int> AddCustomer(Customer customer);
+        Task AddCustomerList(CustomerList customer);
         Task DeleteCustomer(int id);
         Task UpdateCustomer(Customer customer);
 

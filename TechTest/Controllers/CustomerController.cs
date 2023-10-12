@@ -58,6 +58,20 @@ namespace TechTest.Controllers
             }
         }
 
+        [HttpPost("list")]
+        public async Task<IActionResult> AddCustomerList(CustomerList customers)
+        {
+            try
+            {
+                await _customerService.AddCustomerList(customers);
+                return Created("api/[controller]",null);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Unable to create customer");
+            }
+        }
+
         [HttpPut]
         public async Task<IActionResult> UpdateCustomer(Customer customer)
         {

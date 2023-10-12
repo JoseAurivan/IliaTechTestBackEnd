@@ -32,12 +32,33 @@ namespace Infraestructure.Adapting
 
         }
 
+        public async Task<int> AddCustomerAndOrder(Customer customer)
+        {
+            try
+            {
+                var orderDTOs = new List<OrderDTO>();
+                foreach(var order in customer.Orders )
+                {
+                    orderDTOs.Add(new OrderDTO(default,order.Description,order.CustomerId));
+                }
+                var customerDTO = new CustomerDTO(default, customer.Name, customer.Email, orderDTOs);
+                _context.Add(customerDTO);
+                await _context.SaveChangesAsync();
+                return customerDTO.Id;
+
+            }
+            catch (Exception ex) { throw; }
+        }
+
         public async Task DeleteCustomer(int id)
         {
             try 
             {
                 var customerDTO = _context.Customer.FirstOrDefault(x => x.Id == id);
-                if(customerDTO is not null) _context.Customer.Remove(customerDTO);
+
+                if (customerDTO is not null) _context.Customer.Remove(customerDTO);
+                else throw new DeleteCustomerException();
+
                 await _context.SaveChangesAsync();
             } catch (Exception ex) { throw; }
 
