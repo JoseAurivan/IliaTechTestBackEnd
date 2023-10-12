@@ -31,7 +31,9 @@ namespace Core.Adapters
             try 
             {
                 await _orderRepository.DeleteOrder(id);
-            } catch (Exception ex) { throw; }
+            }
+            catch(OrderNotFoundException ex) { throw; }
+            catch(Exception ex) { throw; }
 
         }
 

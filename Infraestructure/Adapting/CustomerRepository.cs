@@ -37,7 +37,8 @@ namespace Infraestructure.Adapting
             try
             {
                 var orderDTOs = new List<OrderDTO>();
-                foreach(var order in customer.Orders )
+                if (customer.Orders is null) throw new CustomersOrderNull();
+                foreach(var order in customer.Orders)
                 {
                     orderDTOs.Add(new OrderDTO(default,order.Description,order.CustomerId));
                 }
@@ -57,6 +58,7 @@ namespace Infraestructure.Adapting
                 var customerDTO = _context.Customer.FirstOrDefault(x => x.Id == id);
 
                 if (customerDTO is not null) _context.Customer.Remove(customerDTO);
+             
                 else throw new DeleteCustomerException();
 
                 await _context.SaveChangesAsync();
@@ -104,7 +106,7 @@ namespace Infraestructure.Adapting
                     _context.Entry(customerDTO).State = EntityState.Modified;
                     await _context.SaveChangesAsync();
                 }
-                else { throw new Exception(); }
+                else  throw new CustomerNullException(); 
             } catch (Exception ex) { throw; }
 
         }

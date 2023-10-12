@@ -24,10 +24,7 @@ namespace TechTest.Controllers
                 var orders = await _orderService.GetAllOrdersByCustomerId(id);
                 return Ok(orders);
             }
-            catch(OrderNotFoundException ex)
-            {
 
-            }
             catch (Exception ex)
             {
                 return StatusCode(500, "Database could not respond");
@@ -58,6 +55,10 @@ namespace TechTest.Controllers
             {
                 await _orderService.DeleteOrder(id);
                 return Ok();
+            }
+            catch (OrderNotFoundException ex)
+            {
+                return StatusCode(410, "Object no longer exists");
             }
             catch (Exception ex)
             {

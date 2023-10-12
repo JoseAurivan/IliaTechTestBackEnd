@@ -39,8 +39,9 @@ namespace Infraestructure.Adapting
             {
                 var orderDTO = await context.Order.FirstOrDefaultAsync(x => x.Id == id);
 
-                if(orderDTO is not null) 
+                if (orderDTO is not null)
                     context.Remove(orderDTO);
+                else throw new OrderNotFoundException();
 
                 await context.SaveChangesAsync();
 

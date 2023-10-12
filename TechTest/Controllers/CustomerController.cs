@@ -27,7 +27,7 @@ namespace TechTest.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest("Not Possible fetch data");
+                return StatusCode(500, "Database could not respond");
             }
         }
 
@@ -40,7 +40,7 @@ namespace TechTest.Controllers
                 return Ok(customer);
             }catch(Exception ex)
             {
-                return BadRequest("User not found or doesn't exist");
+                return StatusCode(500, "Database could not respond");
             }
             
         }
@@ -54,7 +54,7 @@ namespace TechTest.Controllers
                 return Created("api/[controller]", id);
             }catch(Exception ex)
             {
-                return BadRequest("Unable to create customer");
+                return StatusCode(500, "Database could not respond");
             }
         }
 
@@ -68,7 +68,7 @@ namespace TechTest.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest("Unable to create customer");
+                return StatusCode(500, "Database could not respond");
             }
         }
 
@@ -79,9 +79,14 @@ namespace TechTest.Controllers
             {
                 await  _customerService.UpdateCustomer(customer);
                 return Ok();
-            }catch(Exception ex)
+            }
+            catch(CustomerNullException ex)
             {
-                return BadRequest("Unable to update customer");
+                return StatusCode(401, "The resource is no longer avalaible");
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, "Database could not respond");
             }
         }
 
@@ -92,9 +97,14 @@ namespace TechTest.Controllers
             {
                 await _customerService.DeleteCustomer(id);
                 return Ok();
-            }catch(Exception ex)
+            }
+            catch(DeleteCustomerException ex)
             {
-                return BadRequest("Unable to delete customer");
+                return StatusCode(401, "The resource is no longer avalaible");
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, "Database could not respond");
             }
         }
     }
