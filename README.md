@@ -19,53 +19,22 @@ The domain is managed using Redux and when the user clicks on the "Clear all cus
 You can see the redux and its reducers unde /src/store
 
 
-## API FETCH
-There you can acess then using API requests done with Axios by clicking on the See customers button.
+## API 
+This is the API and DB integration of the front end project.
 
 
 ## Perks
 
-- Integration .NET Backend
-- Real time state management with Redux and Redux Immer
-- Responsive Layout
-- Next Js 13
-- Next JS built in Route Handler
-- Unit Tests with JEST
-- .NET Backend Tested With xUnit
-- Typescript
-- ESlint
+- EF 6
+- .NET 6
+- xUnit
+
 
 
 ## Running
 
-If is necessary to change the api port go to src/utils/axios.ts currently is set to the port 5149
+The connection string currently expects a Postgres running on the default port
 
-Before all
-
-```bash
-    npm install
-```
-
-To run on dev mode
-
-```bash
-  npm run dev
-```
-
-To run on production mode
-```bash
-  npm run build
-  npm run start
-```
-
-
-## Running tests
-
-To run tests use the following command
-
-```bash
-  npm run test
-```
 
 
 ## Stack
@@ -77,6 +46,6 @@ To run tests use the following command
 
 ## BackEnd Project
 
- - [.NET Backend](https://github.com/JoseAurivan/IliaTechTestBackEnd)
+ - [NextJS REACT Front-end](https://github.com/JoseAurivan/IliaTechTest)
 
 
